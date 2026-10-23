@@ -9,7 +9,7 @@ Personal IELTS Writing phrase spelling trainer · Inspired by [Pêche](https://g
 ## Features
 
 - Pêche-inspired mint-to-turquoise gradient, frosted translucent cards, mobile-friendly UI.
-- Spelling mode: Chinese prompt → type the complete English phrase; misspellings must be corrected and two correct attempts are required to finish.
+- Spelling mode: Chinese prompt → type the complete English phrase; misspellings must be corrected and two correct attempts are required to finish. English (en-GB) pronunciation automatically plays on each question and after a correct answer; Tab replays it.\n- Keyboard: `S` starts Spelling, `R` opens Review, `L` opens Library from home; during training `Enter` checks and advances on the answer screen, `Space` also advances, `Tab` replays the current phrase and `Esc` returns home.\n- A misspelling reveals the correction briefly; it disappears when typing begins again.
 - Review mode: due-first batches up to 25 phrases; successful review increases the interval (roughly 2.2×).
 - Free practice and searchable-by-topic library selector.
 - Session and review progress saved to the current browser's localStorage.
