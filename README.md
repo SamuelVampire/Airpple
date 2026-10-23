@@ -2,9 +2,9 @@
 
 Personal IELTS Writing phrase spelling trainer · Inspired by [Pêche](https://github.com/SamuelVampire/SV.peche).
 
-## Open the app
+### [✳ 打开 Airpple / Open Airpple](https://samuelvampire.github.io/Airpple/)
 
-The live URL will be added here once Vercel deployment is verified. **A GitHub repository URL is not the published app URL.**
+> 使用 GitHub Pages 发布（main 分支 / 根目录）。如果刚启用 Pages，网站可能需要片刻才会显示。
 
 ## Features
 
@@ -20,6 +20,6 @@ Initial dataset: **94 deduplicated phrases** imported and curated from the user'
 
 ## Deployment
 
-Static site: `index.html` + `phrases.js`, no build command, no framework, no dependencies. In Vercel choose framework **Other**, root directory `./`, build command blank, output directory default/project root. Git integration can deploy pushes to the `main` branch.
+GitHub Pages：Settings → Pages → Deploy from a branch → `main` → `/(root)`。本项目只使用 `index.html` 和 `phrases.js`，无需构建工具或 Vercel。
 
-Private repository does not automatically mean a private deployment. Browser-local data is not synchronized across devices; clearing site data can erase progress. For cross-device sync, add a database and authentication later.
+学习进度保存在当前浏览器的 localStorage，不会自动在不同设备之间同步；清理浏览器网站数据可能删除进度。
