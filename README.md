@@ -8,8 +8,10 @@ Personal IELTS Writing phrase spelling trainer · Inspired by [Pêche](https://g
 
 ## Features
 
-- Pêche-inspired mint-to-turquoise gradient, frosted translucent cards, mobile-friendly UI.
-- Spelling mode: Chinese prompt → type the complete English phrase; misspellings must be corrected and two correct attempts are required to finish. English (en-GB) browser speech synthesis automatically plays on each question and after a correct answer; Tab replays it. Actual pronunciation depends on installed browser voices; automatic audio may be restricted until the user interacts with the page.\n- Keyboard: `S` starts Spelling, `R` opens Review, `L` opens Library from home; during training `Enter` checks and advances on the answer screen, `Space` also advances, `Tab` replays the current phrase and `Esc` returns home.\n- A misspelling reveals the correction briefly; it disappears when typing begins again.
+- Pêche-inspired airy white translucent cards, subtle lime gradients and brat-green accents. The homepage is designed to fit iPad viewports without scrolling.
+- Spelling mode: Chinese prompt → type the complete English phrase; misspellings must be corrected and two correct attempts are required to finish. English (en-GB) browser speech synthesis automatically plays on each question and after a correct answer; Tab replays it. Actual pronunciation depends on installed browser voices; automatic audio may be restricted until the user interacts with the page.
+- Keyboard: `S` starts Spelling, `R` opens Review, `L` opens Library and `P` opens Free Practice from home; during training `Enter` checks and advances on the answer screen, `Space` also advances, `Tab` replays the current phrase and `Esc` returns home.
+- A misspelling reveals the correction briefly; it disappears when typing begins again.
 - Review mode: due-first batches up to 25 phrases; successful review increases the interval (roughly 2.2×). A misspelled phrase is due again after roughly 10 minutes once the current review is completed.
 - Free practice and searchable-by-topic library selector.
 - Spelling, Review and Free Practice use independent sessions. Switching modes preserves each unfinished batch, including its streaks and current position. Existing v1 session data is migrated where possible.\n- Session and review progress saved to the current browser's localStorage.
