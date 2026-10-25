@@ -12,6 +12,7 @@ Personal IELTS Writing phrase spelling trainer · Inspired by [Pêche](https://g
 - Spelling mode: Chinese prompt → type the complete English phrase; misspellings must be corrected and two correct attempts are required to finish. English (en-GB) browser speech synthesis automatically plays on each question and after a correct answer; Tab replays it. Actual pronunciation depends on installed browser voices; automatic audio may be restricted until the user interacts with the page.
 - Keyboard: `S` starts Spelling, `R` opens Review, `L` opens Library from home; during training `Enter` checks and advances on the answer screen, `Space` also advances, `Tab` replays the current phrase and `Esc` returns home.
 - A misspelling reveals the correction briefly; it disappears when typing begins again.
+- Each spelling card displays its current two-correct-attempt streak: `0/2` → `1/2` → `2/2`, with two small progress dots. Misspelling resets it to `0/2`. The 25-phrase rotation and saved study sessions remain unchanged.
 - Review mode: due-first batches up to 25 phrases; successful review increases the interval (roughly 2.2×). A misspelled phrase is due again after roughly 10 minutes once the current review is completed.
 - Searchable-by-topic phrase library, without a duplicate free-practice mode.
 - Spelling and Review use independent sessions. Switching modes preserves each unfinished batch, including its streaks and current position. Existing v1 session data is migrated where possible.
