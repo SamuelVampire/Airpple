@@ -89,35 +89,22 @@ function prepareRollingSession(){
   if(session.windowSize!==5){
     const at=Math.max(0,Math.min(Number(session.current)||0,session.queue.length-1));
     session.queue=session.queue.slice(at).concat(session.queue.slice(0,at));
-    session.current=0;session.windowSize=5;
+    session.current=0;
+    session.windowSize=5;
   }
-  if(!Array.isArray(session.groupIds)||!session.groupIds.length)
-    session.groupIds=session.queue.slice(0,5).map(item=>item.id);
+  delete session.groupIds;
 }
-function carryDifficultPhrase(){
-  if(!session?.queue?.length)return;
-  if(!Array.isArray(session.groupIds)||!session.groupIds.length)
-    session.groupIds=session.queue.slice(0,5).map(item=>item.id);
-  const activeIds=session.groupIds.filter(id=>session.queue.some(item=>item.id===id));
-  if(activeIds.length===0){
-    session.groupIds=session.queue.slice(0,5).map(item=>item.id);
-    return;
-  }
-  if(activeIds.length!==1)return;
-  const lastId=activeIds[0],remaining=session.queue.find(item=>item.id===lastId);
-  // Move only the unsuccessful straggler into the NEXT five-phrase window.
-  // Never skip a phrase when there are no more phrases to practise with.
-  if(!remaining?.wrong||session.queue.length<=1)return;
-  const nextItems=session.queue.filter(item=>item.id!==lastId);
-  session.queue=[...nextItems.slice(0,4),remaining,...nextItems.slice(4)];
-  session.groupIds=session.queue.slice(0,5).map(item=>item.id);
-  session.current=0;
+function slideMistakesBack(){
+  // Reprioritize only after a card graduates; wrong cards stay in the active five,
+  // behind the more readily mastered cards. No fixed five-item group boundaries.
+  const active=session.queue.slice(0,5),waiting=session.queue.slice(5);
+  session.queue=[...active.filter(item=>!item.wrong),...active.filter(item=>item.wrong),...waiting];
 }
-function start(type){if(type!=="new"&&type!=="review")return;if(session?.type)save();session=sessions[type]||null;if(session&&session.queue?.length){session.queue=session.queue.filter(x=>WORDS.some(w=>w.id===x.id));if(session.queue.length){session.current=Math.min(session.current||0,session.queue.length-1);prepareRollingSession();mode="study";save();render();return}}session=null;let pool=type==="review"?due().sort((a,b)=>state(a).due-state(b).due):WORDS.filter(w=>!state(w).learned);if(!pool.length){mode="empty";$("#root").innerHTML='<div class="pane empty"><h2>All caught up ✳</h2><p class="muted">这个模式暂时没有待练词组。</p><button class="primary" onclick="home()">Back home</button></div>';return}pool=type==="review"?pool.slice(0,25):shuffle(pool).slice(0,25);session={type,queue:pool.map(w=>({id:w.id,streak:0,wrong:false})),current:0,windowSize:5,groupIds:pool.slice(0,5).map(w=>w.id),total:pool.length,completed:0,phase:"typing",value:"",result:null};sessions[type]=session;save();mode="study";render()}
+function start(type){if(type!=="new"&&type!=="review")return;if(session?.type)save();session=sessions[type]||null;if(session&&session.queue?.length){session.queue=session.queue.filter(x=>WORDS.some(w=>w.id===x.id));if(session.queue.length){session.current=Math.min(session.current||0,session.queue.length-1);prepareRollingSession();mode="study";save();render();return}}session=null;let pool=type==="review"?due().sort((a,b)=>state(a).due-state(b).due):WORDS.filter(w=>!state(w).learned);if(!pool.length){mode="empty";$("#root").innerHTML='<div class="pane empty"><h2>All caught up ✳</h2><p class="muted">这个模式暂时没有待练词组。</p><button class="primary" onclick="home()">Back home</button></div>';return}pool=type==="review"?pool.slice(0,25):shuffle(pool).slice(0,25);session={type,queue:pool.map(w=>({id:w.id,streak:0,wrong:false})),current:0,windowSize:5,total:pool.length,completed:0,phase:"typing",value:"",result:null};sessions[type]=session;save();mode="study";render()}
 function current(){return session&&WORDS.find(w=>w.id===session.queue[session.current]?.id)}
-function render(){if(!session||!session.queue.length){finish();return}let w=current();if(!w){session.queue.splice(session.current,1);session.current=0;save();render();return}let reviewed=session.completed,percent=Math.round(100*reviewed/session.total),reveal=session.phase==="result",streak=Math.min(2,Math.max(0,Number(session.queue[session.current]?.streak)||0));$("#root").innerHTML='<button class="back" onclick="home()">← Back</button><div class="pane"><div class="studyhead"><span>'+esc(session.type==="review"?"REVIEW":"SPELLING")+' · '+esc(w.category)+' · '+Math.min(5,session.queue.length)+'-PHRASE LOOP</span><span>'+reviewed+' / '+session.total+'</span></div><div class="progress"><i style="width:'+percent+'%"></i></div><div class="streak-meter" aria-label="当前词组连续拼对进度"><span class="streak-label">THIS PHRASE <b>'+streak+' / 2</b></span><span class="streak-dots" aria-hidden="true"><i class="'+(streak>=1?'filled':'')+'"></i><i class="'+(streak>=2?'filled':'')+'"></i></span></div><div class="prompt"><div class="mini">WRITE THE ENGLISH PHRASE</div><h1>'+esc(w.zh)+'</h1><small>Tab 重播发音 · Enter 检查 / 下一题 · 答案页也可以按 Space</small><div class="controls" style="justify-content:center"><button type="button" class="pill" id="sound" aria-label="播放英文发音">◖)) Listen · Tab</button></div></div><form id="form"><input id="spell" class="spellinput" placeholder="Type your answer…" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="英文词组拼写" value="'+(reveal?esc(w.en):esc(session.value||""))+'"><div id="feedback">'+feedback(w)+'</div><div class="actions"><button class="primary" type="submit">'+(reveal?"Next →":"Check →")+'</button></div></form><div class="footer">每次 5 个词组滚动循环 · 连续拼对两次退出 · 进度自动保存</div></div>';$("#sound").onclick=()=>speak(w.en);$("#form").onsubmit=e=>{e.preventDefault();session.phase==="result"?next():check()};let input=$("#spell");if(reveal){input.disabled=true;$("#form button[type=submit]").focus()}else{input.focus();input.setSelectionRange(input.value.length,input.value.length);input.oninput=()=>{session.value=input.value;session.result=null;$("#feedback").innerHTML="";save()}}speak(w.en)}
-function feedback(w){if(!session.result)return"";let good=session.result.good;return '<div class="feedback '+(good?"":"bad")+'"><strong>'+(good?"Correct ✓":"Not quite · spell it again")+'</strong><div class="answer">'+esc(w.en)+'</div><div class="mini">'+esc(w.zh)+'</div>'+(good&&session.result.streak===1?'<div class="mini">第一次拼对，稍后还会出现一次。</div>':"")+'</div>'}
-const norm=s=>s.trim().replace(/\s+/g," ").toLowerCase().replace(/[’‘]/g,"'");function check(){let w=current(),item=session.queue[session.current],input=$("#spell").value;session.value=input;if(!input.trim())return;if(norm(input)!==norm(w.en)){item.wrong=true;item.streak=0;session.result={good:false};session.phase="typing";let p=state(w);{p.mistakes++;p.attempts++;progress[w.id]=p}session.value="";save();render();return}item.streak++;session.result={good:true,streak:item.streak};session.phase="result";save();render()}
+function render(){if(!session||!session.queue.length){finish();return}let w=current();if(!w){session.queue.splice(session.current,1);session.current=0;save();render();return}let reviewed=session.completed,percent=Math.round(100*reviewed/session.total),reveal=session.phase==="result",streak=Math.min(2,Math.max(0,Number(session.queue[session.current]?.streak)||0));$("#root").innerHTML='<button class="back" onclick="home()">← Back</button><div class="pane"><div class="studyhead"><span>'+esc(session.type==="review"?"REVIEW":"SPELLING")+' · '+esc(w.category)+' · '+Math.min(5,session.queue.length)+'-WORD WINDOW</span><span>'+reviewed+' / '+session.total+'</span></div><div class="progress"><i style="width:'+percent+'%"></i></div><div class="streak-meter" aria-label="当前词组连续拼对进度"><span class="streak-label">THIS PHRASE <b>'+streak+' / 2</b></span><span class="streak-dots" aria-hidden="true"><i class="'+(streak>=1?'filled':'')+'"></i><i class="'+(streak>=2?'filled':'')+'"></i></span></div><div class="prompt"><div class="mini">WRITE THE ENGLISH PHRASE</div><h1>'+esc(w.zh)+'</h1><small>Tab 重播发音 · Enter 检查 / 下一题 · 答案页也可以按 Space</small><div class="controls" style="justify-content:center"><button type="button" class="pill" id="sound" aria-label="播放英文发音">◖)) Listen · Tab</button></div></div><form id="form"><input id="spell" class="spellinput" placeholder="Type your answer…" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="英文词组拼写" value="'+(reveal?esc(w.en):esc(session.value||""))+'"><div id="feedback">'+feedback(w)+'</div><div class="actions"><button class="primary" type="submit">'+(reveal?"Next →":"Check →")+'</button></div></form><div class="footer">5 词滑动窗口 · 对两次退出并补入新词 · 错词向后轮转</div></div>';$("#sound").onclick=()=>speak(w.en);$("#form").onsubmit=e=>{e.preventDefault();session.phase==="result"?next():check()};let input=$("#spell");if(reveal){input.disabled=true;$("#form button[type=submit]").focus()}else{input.focus();input.setSelectionRange(input.value.length,input.value.length);input.oninput=()=>{session.value=input.value;session.result=null;$("#feedback").innerHTML="";save()}}speak(w.en)}
+function feedback(w){if(!session.result)return"";let good=session.result.good;return '<div class="feedback '+(good?"":"bad")+'"><strong>'+(good?"Correct ✓":"Not quite · back in the loop")+'</strong><div class="answer">'+esc(w.en)+'</div><div class="mini">'+esc(w.zh)+'</div>'+(good&&session.result.streak===1?'<div class="mini">第一次拼对，稍后还会出现一次。</div>':!good?'<div class="mini">已重置为 0/2，点 Next 后继续滚动，稍后再练。</div>':"")+'</div>'}
+const norm=s=>s.trim().replace(/\s+/g," ").toLowerCase().replace(/[’‘]/g,"'");function check(){let w=current(),item=session.queue[session.current],input=$("#spell").value;session.value=input;if(!input.trim())return;if(norm(input)!==norm(w.en)){item.wrong=true;item.streak=0;session.result={good:false};session.phase="result";let p=state(w);{p.mistakes++;p.attempts++;progress[w.id]=p}session.value="";save();render();return}item.streak++;session.result={good:true,streak:item.streak};session.phase="result";save();render()}
 function next(){
   if(!session?.queue?.length){finish();return}
   const item=session.queue[0],w=current();
@@ -130,13 +117,13 @@ function next(){
     progress[w.id]=p;
     session.queue.shift();
     session.completed++;
+    slideMistakesBack();
   }else{
-    // Repeat inside a five-phrase window before introducing another phrase.
+    // First correct or incorrect: rotate to the back of the active five.
     session.queue.shift();
     session.queue.splice(Math.min(4,session.queue.length),0,item);
   }
   session.current=0;session.phase="typing";session.value="";session.result=null;
-  carryDifficultPhrase();
   save();
   if(!session.queue.length)finish();else render();
 }
