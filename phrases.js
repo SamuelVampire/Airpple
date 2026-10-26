@@ -563,5 +563,233 @@ window.AIRPPLE_PHRASES = [
     "zh": "导致严重问题",
     "category": "Core expressions",
     "source": "Notion · 作文词组模版（g总结）"
+  },
+  {
+    "en": "fast fashion",
+    "zh": "快时尚",
+    "category": "Task 2 · Consumerism & Fashion",
+    "source": "IELTS G Task 2 · Excessive clothing consumption · 2026-10-25"
+  },
+  {
+    "en": "affordable clothing",
+    "zh": "价格实惠的服装",
+    "category": "Task 2 · Consumerism & Fashion",
+    "source": "IELTS G Task 2 · Excessive clothing consumption · 2026-10-25"
+  },
+  {
+    "en": "offer clothes at low prices",
+    "zh": "以低价出售服装",
+    "category": "Task 2 · Consumerism & Fashion",
+    "source": "IELTS G Task 2 · Excessive clothing consumption · 2026-10-25"
+  },
+  {
+    "en": "a wide range of clothing options",
+    "zh": "各种各样的服装选择",
+    "category": "Task 2 · Consumerism & Fashion",
+    "source": "IELTS G Task 2 · Excessive clothing consumption · 2026-10-25"
+  },
+  {
+    "en": "encourage impulse buying",
+    "zh": "鼓励冲动购物",
+    "category": "Task 2 · Consumerism & Fashion",
+    "source": "IELTS G Task 2 · Excessive clothing consumption · 2026-10-25"
+  },
+  {
+    "en": "make unnecessary purchases",
+    "zh": "进行不必要的购买",
+    "category": "Task 2 · Consumerism & Fashion",
+    "source": "IELTS G Task 2 · Excessive clothing consumption · 2026-10-25"
+  },
+  {
+    "en": "buy more than they actually need",
+    "zh": "购买超过实际需要的东西",
+    "category": "Task 2 · Consumerism & Fashion",
+    "source": "IELTS G Task 2 · Excessive clothing consumption · 2026-10-25"
+  },
+  {
+    "en": "be tempted to buy",
+    "zh": "忍不住想购买",
+    "category": "Task 2 · Consumerism & Fashion",
+    "source": "IELTS G Task 2 · Excessive clothing consumption · 2026-10-25"
+  },
+  {
+    "en": "make impulse purchases",
+    "zh": "冲动购物",
+    "category": "Task 2 · Consumerism & Fashion",
+    "source": "IELTS G Task 2 · Excessive clothing consumption · 2026-10-25"
+  },
+  {
+    "en": "buy clothes during sales",
+    "zh": "在打折期间购买衣服",
+    "category": "Task 2 · Consumerism & Fashion",
+    "source": "IELTS G Task 2 · Excessive clothing consumption · 2026-10-25"
+  },
+  {
+    "en": "the influence of social media",
+    "zh": "社交媒体的影响",
+    "category": "Task 2 · Consumerism & Fashion",
+    "source": "IELTS G Task 2 · Excessive clothing consumption · 2026-10-25"
+  },
+  {
+    "en": "fashion influencers",
+    "zh": "时尚博主",
+    "category": "Task 2 · Consumerism & Fashion",
+    "source": "IELTS G Task 2 · Excessive clothing consumption · 2026-10-25"
+  },
+  {
+    "en": "promote the latest fashion trends",
+    "zh": "推广最新时尚潮流",
+    "category": "Task 2 · Consumerism & Fashion",
+    "source": "IELTS G Task 2 · Excessive clothing consumption · 2026-10-25"
+  },
+  {
+    "en": "keep up with fashion trends",
+    "zh": "跟上时尚潮流",
+    "category": "Task 2 · Consumerism & Fashion",
+    "source": "IELTS G Task 2 · Excessive clothing consumption · 2026-10-25"
+  },
+  {
+    "en": "update their wardrobes regularly",
+    "zh": "定期更新衣橱",
+    "category": "Task 2 · Consumerism & Fashion",
+    "source": "IELTS G Task 2 · Excessive clothing consumption · 2026-10-25"
+  },
+  {
+    "en": "feel pressured to buy new clothes",
+    "zh": "感到有购买新衣服的压力",
+    "category": "Task 2 · Consumerism & Fashion",
+    "source": "IELTS G Task 2 · Excessive clothing consumption · 2026-10-25"
+  },
+  {
+    "en": "be influenced by online advertisements",
+    "zh": "受到网络广告的影响",
+    "category": "Task 2 · Consumerism & Fashion",
+    "source": "IELTS G Task 2 · Excessive clothing consumption · 2026-10-25"
+  },
+  {
+    "en": "follow the latest styles",
+    "zh": "追随最新款式",
+    "category": "Task 2 · Consumerism & Fashion",
+    "source": "IELTS G Task 2 · Excessive clothing consumption · 2026-10-25"
+  },
+  {
+    "en": "keep up with the latest fashion trends",
+    "zh": "跟上最新时尚潮流",
+    "category": "Task 2 · Consumerism & Fashion",
+    "source": "IELTS G Task 2 · Excessive clothing consumption · 2026-10-25"
+  },
+  {
+    "en": "promote new fashion trends",
+    "zh": "推广新的时尚潮流",
+    "category": "Task 2 · Consumerism & Fashion",
+    "source": "IELTS G Task 2 · Excessive clothing consumption · 2026-10-25"
+  },
+  {
+    "en": "raise public awareness of",
+    "zh": "提高公众对……的认识",
+    "category": "Task 2 · Consumerism & Fashion",
+    "source": "IELTS G Task 2 · Excessive clothing consumption · 2026-10-25"
+  },
+  {
+    "en": "the environmental impact of fast fashion",
+    "zh": "快时尚对环境的影响",
+    "category": "Task 2 · Consumerism & Fashion",
+    "source": "IELTS G Task 2 · Excessive clothing consumption · 2026-10-25"
+  },
+  {
+    "en": "excessive clothing consumption",
+    "zh": "过度服装消费",
+    "category": "Task 2 · Consumerism & Fashion",
+    "source": "IELTS G Task 2 · Excessive clothing consumption · 2026-10-25"
+  },
+  {
+    "en": "educational campaigns",
+    "zh": "教育宣传活动",
+    "category": "Task 2 · Consumerism & Fashion",
+    "source": "IELTS G Task 2 · Excessive clothing consumption · 2026-10-25"
+  },
+  {
+    "en": "encourage responsible consumption",
+    "zh": "鼓励负责任的消费",
+    "category": "Task 2 · Consumerism & Fashion",
+    "source": "IELTS G Task 2 · Excessive clothing consumption · 2026-10-25"
+  },
+  {
+    "en": "reduce textile waste",
+    "zh": "减少纺织品废弃物",
+    "category": "Task 2 · Consumerism & Fashion",
+    "source": "IELTS G Task 2 · Excessive clothing consumption · 2026-10-25"
+  },
+  {
+    "en": "make more informed purchasing decisions",
+    "zh": "作出更理性的购买决定",
+    "category": "Task 2 · Consumerism & Fashion",
+    "source": "IELTS G Task 2 · Excessive clothing consumption · 2026-10-25"
+  },
+  {
+    "en": "contribute to environmental problems",
+    "zh": "造成或加剧环境问题",
+    "category": "Task 2 · Consumerism & Fashion",
+    "source": "IELTS G Task 2 · Excessive clothing consumption · 2026-10-25"
+  },
+  {
+    "en": "avoid unnecessary purchases",
+    "zh": "避免不必要的购买",
+    "category": "Task 2 · Consumerism & Fashion",
+    "source": "IELTS G Task 2 · Excessive clothing consumption · 2026-10-25"
+  },
+  {
+    "en": "high-quality clothing",
+    "zh": "高质量的服装",
+    "category": "Task 2 · Consumerism & Fashion",
+    "source": "IELTS G Task 2 · Excessive clothing consumption · 2026-10-25"
+  },
+  {
+    "en": "durable clothes",
+    "zh": "耐穿的衣服",
+    "category": "Task 2 · Consumerism & Fashion",
+    "source": "IELTS G Task 2 · Excessive clothing consumption · 2026-10-25"
+  },
+  {
+    "en": "clothes that last longer",
+    "zh": "使用寿命更长的服装",
+    "category": "Task 2 · Consumerism & Fashion",
+    "source": "IELTS G Task 2 · Excessive clothing consumption · 2026-10-25"
+  },
+  {
+    "en": "invest in quality rather than quantity",
+    "zh": "注重质量而非数量",
+    "category": "Task 2 · Consumerism & Fashion",
+    "source": "IELTS G Task 2 · Excessive clothing consumption · 2026-10-25"
+  },
+  {
+    "en": "reduce the need for frequent replacements",
+    "zh": "减少频繁更换的需求",
+    "category": "Task 2 · Consumerism & Fashion",
+    "source": "IELTS G Task 2 · Excessive clothing consumption · 2026-10-25"
+  },
+  {
+    "en": "save money in the long run",
+    "zh": "从长远来看省钱",
+    "category": "Task 2 · Consumerism & Fashion",
+    "source": "IELTS G Task 2 · Excessive clothing consumption · 2026-10-25"
+  },
+  {
+    "en": "develop sustainable shopping habits",
+    "zh": "养成可持续的购物习惯",
+    "category": "Task 2 · Consumerism & Fashion",
+    "source": "IELTS G Task 2 · Excessive clothing consumption · 2026-10-25"
+  },
+  {
+    "en": "buy clothes that last longer",
+    "zh": "购买更耐穿的衣服",
+    "category": "Task 2 · Consumerism & Fashion",
+    "source": "IELTS G Task 2 · Excessive clothing consumption · 2026-10-25"
+  },
+  {
+    "en": "choose higher-quality clothing",
+    "zh": "选择质量更好的衣服",
+    "category": "Task 2 · Consumerism & Fashion",
+    "source": "IELTS G Task 2 · Excessive clothing consumption · 2026-10-25"
   }
 ];
