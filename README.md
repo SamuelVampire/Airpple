@@ -20,7 +20,7 @@ Personal IELTS Writing phrase spelling trainer · Inspired by [Pêche](https://g
 
 ## Phrase data
 
-Initial dataset: **94 deduplicated phrases** imported and curated from the user's Notion page **作文词组模版（g总结）** (23 October 2026). The source includes eight Task 2 themes plus argumentative patterns, reasons and Task 1 letter phrases. Data lives in `phrases.js` as `window.AIRPPLE_PHRASES`. New writing corrections can be appended in the same structure with `en`, `zh`, `category` and `source` fields. Avoid publishing private essay content without consent.
+Current dataset: **132 deduplicated phrases** — 94 initially imported and curated from the user's Notion page **作文词组模版（g总结）** (23 October 2026), plus 38 phrases from the IELTS Task 2 essay on excessive clothing consumption (25 October 2026). Topics include eight original Task 2 themes, argumentative patterns, reasons, Task 1 letter phrases and **Task 2 · Consumerism & Fashion**. Data lives in `phrases.js` as `window.AIRPPLE_PHRASES`. New writing corrections can be appended in the same structure with `en`, `zh`, `category` and `source` fields. **There is no need to hand-arrange groups of five**: the training code automatically creates and advances a rolling five-phrase window from a session's queue. New phrases enter newly created sessions; an unfinished saved session keeps its existing queue until completion. New Spelling sessions randomly select up to 25 currently unlearned phrases, so fresh imports may not appear in the very next batch. Avoid publishing private essay content without consent.
 
 ## Deployment
 
